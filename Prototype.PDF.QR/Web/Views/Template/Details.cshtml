@@ -1,0 +1,41 @@
+﻿@model Web.Models.TemplateModel
+
+@{
+    ViewData["Title"] = "Template Details";
+}
+
+<h1>Template Details</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            Original File
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OriginalFileName)
+        </dd>
+        <dt class="col-sm-2">
+            Upload Date
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UploadedDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+    <a asp-controller="Document" asp-action="Create" asp-route-templateId="@Model.Id" class="btn btn-primary">Create Document</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>

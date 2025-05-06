@@ -1,8 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using Web.Data;
+using Web.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews()
     .AddRazorRuntimeCompilation();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// Register custom services
+builder.Services.AddScoped<WordProcessingService>();
+builder.Services.AddScoped<QrCodeService>();
+builder.Services.AddScoped<PdfGenerationService>();
 
 var app = builder.Build();
 

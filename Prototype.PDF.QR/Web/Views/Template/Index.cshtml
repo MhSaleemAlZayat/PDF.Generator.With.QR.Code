@@ -1,0 +1,52 @@
+﻿<!-- Views/Template/Index.cshtml -->
+@model IEnumerable<Web.Models.TemplateModel>
+
+@{
+    ViewData["Title"] = "Templates";
+}
+
+<h1>Templates</h1>
+
+<p>
+    <a asp-action="Upload" class="btn btn-primary">Upload New Template</a>
+</p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No templates found. Please upload a Word document template to get started.
+    </div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Original File</th>
+                    <th>Upload Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.OriginalFileName</td>
+                        <td>@item.UploadedDate.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>
+                            <div class="btn-group">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
