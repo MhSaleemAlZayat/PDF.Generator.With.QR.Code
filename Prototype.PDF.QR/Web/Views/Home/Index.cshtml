@@ -1,8 +1,63 @@
-﻿@{
+﻿<!-- Views/Home/Index.cshtml -->
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to PDF Generator</h1>
+    <p>Generate PDF documents from Word templates with custom content and QR codes.</p>
 </div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Templates</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Upload and manage your Word document templates.</p>
+                <a asp-controller="Template" asp-action="Index" class="btn btn-primary">View Templates</a>
+                <a asp-controller="Template" asp-action="Upload" class="btn btn-outline-primary">Upload Template</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Documents</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Create and manage your documents using templates.</p>
+                <a asp-controller="Document" asp-action="Index" class="btn btn-primary">View Documents</a>
+                <a asp-controller="Document" asp-action="Create" class="btn btn-outline-primary">Create Document</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">How It Works</h5>
+            </div>
+            <div class="card-body">
+                <ol>
+                    <li>Upload a Word document template (.docx)</li>
+                    <li>Create a new document and select your template</li>
+                    <li>Use the rich text editor to add content</li>
+                    <li>Add URLs that will be converted to QR codes automatically</li>
+                    <li>Generate a PDF document with your content and QR codes</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Views/Home/Privacy.cshtml -->
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>This page is for demonstration purposes only.</p>
